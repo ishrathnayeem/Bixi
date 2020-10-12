@@ -1,4 +1,4 @@
-package hive.table
+package hivetable
 
 import configuration.Config
 
@@ -37,7 +37,7 @@ class HiveTable extends Config {
       |ROW FORMAT DELIMITED
       |FIELDS TERMINATED BY ','
       |STORED AS TEXTFILE
-      |LOCATION '/user/fall2019/ishrath'
+      |LOCATION '/user/fall2019/ishrath/enriched_station_system'
       |TBLPROPERTIES (
       | "skip.header.line.count" = "1",
       |"serialization.null.format" = "")""".stripMargin

@@ -1,8 +1,8 @@
 import convertion.{JsonDownload, JsonToCsv}
-import hive.table.HiveTable
+import hivetable.HiveTable
 
 object Main extends App {
   new JsonDownload
-  new JsonToCsv
   new HiveTable
+  new JsonToCsv
 }

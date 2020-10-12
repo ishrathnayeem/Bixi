@@ -22,9 +22,9 @@ class JsonToCsv {
   val systemInformationSchema: StructType = Encoders.product[SystemInformation].schema
 
   val stationInformation:
-    String = "/Users/ishrathnayeem/MY MAC/Study/Big Data/MCIT/Final Project/JSON/json created/station_info.json"
+    String = "/Users/ishrathnayeem/MY MAC/Study/Big Data/MCIT/Final Project/JSON/station_info.json"
   val systemInformation:
-    String = "/Users/ishrathnayeem/MY MAC/Study/Big Data/MCIT/Final Project/JSON/json created/system_info.json"
+    String = "/Users/ishrathnayeem/MY MAC/Study/Big Data/MCIT/Final Project/JSON/system_info.json"
 
   val spark: SparkSession = SparkSession.builder().master("local[*]").appName("JSONtoCSV").getOrCreate()
 
@@ -71,6 +71,7 @@ class JsonToCsv {
   )
 
   val csvFile: DataFrame = stationData.crossJoin(systemData)
-  csvFile.write.format("csv").option("header", "True").mode("overwrite").option("sep", ",")
-    .save("hdfs://quickstart.cloudera/user/fall2019/ishrath")
+  csvFile.write.format("com.databricks.spark.csv").option("header", "True").mode("overwrite").option("sep", ",")
+    .save("hdfs://quickstart.cloudera/user/fall2019/ishrath/enriched_station_system")
+
 }
