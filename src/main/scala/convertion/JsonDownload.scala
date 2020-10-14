@@ -11,6 +11,7 @@ class JsonDownload {
     "MY MAC/Study/Big Data/MCIT/Final Project/JSON/system_info.json"))
   systemInfoWriter.write(systemInfo)
   systemInfoWriter.close()
+  println("System Information File Downloaded!")
 
   val stationInformation: BufferedSource = Source.fromURL("https://api-core.bixi.com/gbfs/en/station_information.json")
   val stationInfo: String = stationInformation.mkString
@@ -18,5 +19,5 @@ class JsonDownload {
     "Final Project/JSON/station_info.json"))
   stationInfoWriter.write(stationInfo)
   stationInfoWriter.close()
-
+  println("Station Information File Downloaded!")
 }

@@ -30,8 +30,10 @@ class JsonToCsv {
 
   val stationInformationData: DataFrame = spark.read.option("multiline", "true").option("mode", "PERMISSIVE")
     .json(stationInformation)
+  println("Reading Station Information!")
   val systemInformationData: DataFrame = spark.read.option("multiline", "true").option("mode", "PERMISSIVE")
     .json(systemInformation)
+  println("Reading System Information!")
 
   val stationInformationDataFetch: DataFrame = stationInformationData.select(col("data")
     .getField("stations").as("stations"))
@@ -73,5 +75,6 @@ class JsonToCsv {
   val csvFile: DataFrame = stationData.crossJoin(systemData)
   csvFile.write.format("com.databricks.spark.csv").option("header", "True").mode("overwrite").option("sep", ",")
     .save("hdfs://quickstart.cloudera/user/fall2019/ishrath/enriched_station_system")
+  println("Enriched Station Information and System Information CSV file was saved to HDFS!")
 
 }
