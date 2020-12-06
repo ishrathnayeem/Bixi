@@ -4,6 +4,8 @@ import org.apache.spark.sql.functions.{col, explode}
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.{DataFrame, Encoders, SparkSession}
 
+case class TripData(start_date: String, start_station_code:String, end_date: String, end_station_code:String , duration_sec:String, is_member:String) //
+
 case class StationInformationData
 (station_id:String,external_id:String,name:String,short_name:String,lat:String, lon:String,rental_methods:Array[String],
  capacity:String, electric_bike_surcharge_waiver:String,is_charging:String,eightd_has_key_dispenser:String,
@@ -65,7 +67,6 @@ class JsonToCsv {
     col("data").getField("operator").as("operator"),
     col("data").getField("url").as("url"),
     col("data").getField("purchase_url").as("purchase_url"),
-    col("data").getField("start_date").as("start_date"),
     col("data").getField("phone_number").as("phone_number"),
     col("data").getField("email").as("email"),
     col("data").getField("license_url").as("license_url"),

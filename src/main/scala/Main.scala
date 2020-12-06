@@ -7,5 +7,4 @@ object Main extends App {
   new JsonDownload
   new HiveTable
   new JsonToCsv
-  println("Hive Table Creation Completed")
 }
